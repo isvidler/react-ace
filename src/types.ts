@@ -128,7 +128,7 @@ export interface IAnnotation {
   type: "error" | "info" | "warning";
 }
 
-interface IRenderer extends Ace.VirtualRenderer {
+interface IRenderer extends Omit<Ace.VirtualRenderer, "scroller"> {
   placeholderNode?: HTMLDivElement;
   scroller?: HTMLDivElement;
 }
