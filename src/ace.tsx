@@ -203,6 +203,7 @@ export default class ReactAce extends React.Component<IAceEditorProps> {
       placeholder
     } = this.props;
 
+    // @ts-ignore
     this.editor = ace.edit(this.refEditor);
 
     if (onBeforeLoad) {
@@ -233,9 +234,9 @@ export default class ReactAce extends React.Component<IAceEditorProps> {
       .setMode(
         typeof mode === "string" ? `ace/mode/${mode}` : (mode as Ace.SyntaxMode)
       );
-    if(theme && theme !== "")
-      this.editor.setTheme(`ace/theme/${theme}`);
+    if (theme && theme !== "") this.editor.setTheme(`ace/theme/${theme}`);
     this.editor.setFontSize(
+      // @ts-ignore
       typeof fontSize === "number" ? `${fontSize}px` : fontSize
     );
     this.editor
@@ -344,7 +345,8 @@ export default class ReactAce extends React.Component<IAceEditorProps> {
     }
 
     // First process editor value, as it may create a new session (see issue #300)
-    const valueChanged = this.editor &&
+    const valueChanged =
+      this.editor &&
       nextProps.value != null &&
       this.editor.getValue() !== nextProps.value;
 
@@ -383,6 +385,7 @@ export default class ReactAce extends React.Component<IAceEditorProps> {
     }
     if (nextProps.fontSize !== oldProps.fontSize) {
       this.editor.setFontSize(
+        // @ts-ignore
         typeof nextProps.fontSize === "number"
           ? `${nextProps.fontSize}px`
           : nextProps.fontSize
